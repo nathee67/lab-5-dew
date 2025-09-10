@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             addNoteLauncher.launch(addNote);
         });
 
-        /*btnBrowseNote.setOnClickListener(v -> {
+        btnBrowseNote.setOnClickListener(v -> {
             progressBar2.setVisibility(android.view.View.VISIBLE);
             new Thread(() -> {
                 try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
@@ -113,4 +113,3 @@ public class MainActivity extends AppCompatActivity {
         customer.logout();
     }*/
     }
-}

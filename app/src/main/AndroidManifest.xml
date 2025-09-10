@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nathee018">
         <activity
-            android:name=".UserDetailActivity"
+            android:name=".BrowseNote"
             android:exported="false" />
         <activity
-            android:name=".BrowseNote"
+            android:name=".UserDetailActivity"
             android:exported="false" />
         <activity
             android:name=".AdminUser"
