@@ -75,41 +75,4 @@ public class MainActivity extends AppCompatActivity {
             }).start();
         });
     }
-    /*public static void main(String[] args) {
-//        Note note1 = new TextNote();
-//        User user1 = new User();
-
-//        note1.title = "Introduction to Java";
-//        note1.content = "Java is a high-level programming language developed by Sun Microsystems...";
-//        note1.createdDate = "2025-07-17";
-//        note1.getSummary();
-
-        TextNote textNote1 = new TextNote();
-        textNote1.title = "Introduction to Java";
-        //textNote1.content = "Java is a high-level programming language developed by Sun Microsystems...";
-        textNote1.setTextContent = "Java is a high-level programming language developed by Sun Microsystems...";
-        textNote1.createdDate = "2025-07-17";
-        textNote1.getSummary();
-
-
-//        user1.username = "zero";
-//        user1.password = "StrongPass!2025";
-//        user1.email = "zero@example.com";
-//        user1.information();
-//        user1.logout();
-
-        AdminUser admin = new AdminUser();
-        admin.setUsername("admin01");
-        admin.setPassword("1234");
-        admin.setEmail("admin@mail.com");
-        admin.information();
-        admin.logout();
-
-        CustomerUser customer = new CustomerUser();
-        customer.setUsername("zero");
-        customer.setPassword("StrongPass!2025");
-        customer.setEmail("zero@example.com");
-        customer.information();
-        customer.logout();
-    }*/
     }

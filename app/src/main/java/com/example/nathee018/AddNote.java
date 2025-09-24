@@ -1,5 +1,6 @@
 package com.example.nathee018;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -11,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class AddNote extends AppCompatActivity {
 
@@ -31,9 +35,9 @@ public class AddNote extends AppCompatActivity {
 
         etUserName = findViewById(R.id.editTextText);
         etPassword = findViewById(R.id.editTextText2);
-        btnSave    = findViewById(R.id.button);
+        btnSave = findViewById(R.id.button);
 
-        btnSave.setOnClickListener(v -> {
+       /* btnSave.setOnClickListener(v -> {
             String name = etUserName.getText().toString().trim();
             String pass = etPassword.getText().toString().trim();
 
@@ -60,6 +64,42 @@ public class AddNote extends AppCompatActivity {
             result.putExtra("user", user);
             setResult(RESULT_OK, result);
             finish();
+
+            NoteEntity entity = NoteMapper.toEntity(Note);
+
+            Context context = View.getContext();
+            Executors.newSingleThreadExecutor().execute(() -> {
+                AppDatabase.getInstance(context).noteDao().insert(entity);
+
+            });*/
+        //lAB7
+        btnSave.setOnClickListener(v -> {
+            String title = etUserName.getText().toString().trim();
+            String content = etPassword.getText().toString().trim();
+
+            if (title.isEmpty() || content.isEmpty()) {
+                Toast.makeText(this, "กรุณากรอกข้อมูลให้ครบ", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            //Note (TextNote)
+            String createdDate = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault())
+                    .format(new java.util.Date());
+            Note note = new TextNote(title, createdDate, content);
+
+            //OOP -> entity 11/9/68
+            NoteEntity entity = NoteMapper.toEntity(note);
+
+            //add bata to db
+            Context context = getApplicationContext();
+            Executors.newSingleThreadExecutor().execute(() -> {
+                AppDatabase.getInstance(context).noteDao().insert(entity);
+
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "บันทึกโน้ตสำเร็จ", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+            });
         });
-    }
+        }
 }
